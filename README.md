@@ -9,3 +9,9 @@ For the inpatient:
 	chmod +x ./kubectl
 	sudo mv ./kubectl /usr/local/bin/kubectl
 
+# Set the Kubectl Environment variables
+Copy the proper analytic-workbench-devopts-k8-config/config-<environment> to ~/.kube/config:
+
+	cp analytic-workbench-devopts-k8-config/config-<environment> ~/.kube/config
+
+
