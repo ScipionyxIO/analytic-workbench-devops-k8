@@ -10,29 +10,17 @@ branches:
   only:
     - 0.0.1
 
-jdk:
-  - openjdk8
-
-before_install:
-  - cp .travis.maven.settings.xml $HOME/.m2/settings.xml
-
-install: 
-  - mvn deploy
+install: true 
   
 before_deploy:
-  - mkdir $HOME/.kube
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-  - chmod +x ./kubectl
-  - sudo mv ./kubectl /usr/local/bin/kubectl
+  - curl -LO https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
+  - ls -l
   
 deploy:
   - provider: script
     script:
-      - cp .travis.k8.config-infrastructure $HOME/.kube/config   
       - ls -l
-      - kubectl create -f config-server/src/main/k8/infrastructure-config-server.yaml
     on:
-      #tags: true
       branch: 
         - "0.0.1"
   
