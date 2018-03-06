@@ -14,6 +14,10 @@ install: true
   
 before_deploy:
   - curl -LO https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
+  - unzip terraform_0.11.3_linux_amd64.zip
+  - chmod +x ./terraform
+  - sudo mv ./terraform /usr/local/bin/terraform
+  - terraform
   - ls -l
   
 deploy:
